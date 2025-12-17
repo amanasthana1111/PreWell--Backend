@@ -3,7 +3,6 @@ import { z } from "zod";
 import bcrypt from "bcrypt";
 import { User } from "../Models/user.schema.js";
 import jwt from "jsonwebtoken";
-import cookieParser from "cookie-parser";
 
 const userLogin = async (req, res) => {
   try {
