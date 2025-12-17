@@ -101,13 +101,32 @@ app.post("/login", async (req, res) => {
       sameSite: "strict", 
       maxAge: 24 * 60 * 60 * 1000, // 1 days
     });
+    res.json({
+        message : "SignIn done"
+    })
   } catch (error) {
     return res.status(401).json({
       message: "Something Wrong" + error,
     });
   }
 });
-
+app.get("/logout" , (req , res)=>{
+    try {
+        res.clearCookie("token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
+     return res.status(200).json({
+      success: true,
+      message: "Logged out successfully",
+    });
+    } catch (error) {
+        return res.json({
+            message : "Logout failed"
+        })
+    }
+})
 const main = async () => {
   try {
     await connectDb();
