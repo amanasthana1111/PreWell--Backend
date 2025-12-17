@@ -3,7 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import connectDb from "./DB/dbConnection.js";
 import cookieParser from "cookie-parser";
-import registerRoutes from "./routes/auth.routes.js";
+import registerRoutes from "./Routes/auth.routes.js";
 
 import uploadrouter from "./Routes/upload.route.js";
 
