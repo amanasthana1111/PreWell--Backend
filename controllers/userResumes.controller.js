@@ -1,9 +1,17 @@
 import cloudinary from "../utils/cloudinary.js";
 import fs from "fs";
+import { PDFParse } from "pdf-parse";
+import { User } from "../Models/user.schema.js";
 
 const uploadResumes = async (req, res) => {
   try {
-    const id = req._id;
+    const id = req.user_id;
+    const UserData = await User.findOne({ user: id })
+    if (!UserData) {
+      return res.json({
+        message: "User Not found",
+      });
+    }
     if (!req.file) {
       return res.status(400).json({
         success: false,
@@ -18,10 +26,12 @@ const uploadResumes = async (req, res) => {
       folder: "resumes",
     });
     fs.unlinkSync(localFilePath);
-
+    const parser = new PDFParse({ url: result.secure_url });
+    const data = await parser.getText();
+    await parser.destroy();
+    const text = data.text;
     return res.status(201).json({
       success: true,
-      fileUrl: result.secure_url,
     });
   } catch (error) {
     console.error("Upload error:", error);

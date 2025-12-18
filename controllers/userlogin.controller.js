@@ -1,21 +1,11 @@
-import express from "express";
-import { z } from "zod";
 import bcrypt from "bcrypt";
 import { User } from "../Models/user.schema.js";
 import jwt from "jsonwebtoken";
+import UserLoginInputValidation from "../Validation/UserLogin.validation.js";
 
 const userLogin = async (req, res) => {
   try {
-    const UserInputValidation = z.object({
-      email: z.string().trim().email("Invalid email address"),
-
-      password: z
-        .string()
-        .min(4, "Password must be at least 4 characters")
-        .max(15, "Password must be at most 15 characters"),
-    });
-
-    const parsingData = UserInputValidation.safeParse(req.body);
+    const parsingData = UserLoginInputValidation.safeParse(req.body);
     if (!parsingData.success) {
       return res.status(400).json({
         message: parsed.error.errors[0].message,
