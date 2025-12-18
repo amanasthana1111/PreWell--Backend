@@ -51,8 +51,14 @@ const editProfile = async (req, res) => {
       }
     );
 
-    res.send("done");
-  } catch (error) {}
+    res.json({
+      message :"DONE"
+    });
+  } catch (error) {
+    return res.json({
+      message : "Something Wrong" + error,
+    })
+  }
 };
 
 export default editProfile;
