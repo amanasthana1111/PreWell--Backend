@@ -1,6 +1,6 @@
 import { createClient } from 'redis';
 
-const client = createClient({
+const redisClient = createClient({
     username: process.env.REDIS_USER_NAME,
     password: process.env.REDIS_PASSWORD,
     socket: {
@@ -9,7 +9,7 @@ const client = createClient({
     }
 });
 
-export default client;
+export default redisClient;
 
 
 
