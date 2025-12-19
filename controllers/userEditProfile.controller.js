@@ -11,7 +11,8 @@ const editProfile = async (req, res) => {
         message : "Login First"
       })
     }
-    const UserData = await User.findOne(id)
+    console.log(id)
+    const UserData = await User.findOne({ _id: id })
     if (!UserData) {
       return res.json({
         message: "User Not found",
