@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { tr } from "zod/v4/locales";
 const { Schema } = mongoose;
 
 const UserSchema = new Schema(
@@ -24,6 +25,10 @@ const UserSchema = new Schema(
       required: true,
       select: false,
     },
+    resumesLink:{
+      type : String,
+      default: ""
+    }
   },
   { timestamps: true }
 );

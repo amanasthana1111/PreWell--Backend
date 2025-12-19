@@ -1,4 +1,3 @@
-
 import { User } from "../Models/user.schema.js";
 import { UserResume } from "../Models/userResume.schema.js";
 import UserInputVali from "../Validation/UserProfile.Validation.js";
@@ -6,13 +5,12 @@ import UserInputVali from "../Validation/UserProfile.Validation.js";
 const editProfile = async (req, res) => {
   try {
     const id = req.user_id;
-    if(!id){
+    if (!id) {
       return res.json({
-        message : "Login First"
-      })
+        message: "Login First",
+      });
     }
-    console.log(id)
-    const UserData = await User.findOne({ _id: id })
+    const UserData = await User.findOne({ _id: id });
     if (!UserData) {
       return res.json({
         message: "User Not found",
@@ -28,10 +26,8 @@ const editProfile = async (req, res) => {
       fullName,
       summary,
       skills,
-      education,
-      experience,
+
       projects,
-      contactInfo,
     } = parsingData.data;
 
     const resumeData = await UserResume.findOneAndUpdate(
@@ -41,24 +37,21 @@ const editProfile = async (req, res) => {
         fullName,
         summary,
         skills,
-        education,
-        experience,
         projects,
-        contactInfo
       },
       {
         upsert: true, // create if not exists
-        new: true
+        new: true,
       }
     );
 
     res.json({
-      message :"DONE"
+      message: "DONE",
     });
   } catch (error) {
     return res.json({
-      message : "Something Wrong" + error,
-    })
+      message: "Something Wrong" + error,
+    });
   }
 };
 
