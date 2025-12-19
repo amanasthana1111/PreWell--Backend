@@ -1,11 +1,19 @@
+import jwt from "jsonwebtoken";
+import redisClient from "../DB/redisConnection.js";
 
-const userLogout = (req, res) => {
+const userLogout = async (req, res) => {
   try {
+    const token = req.cookies.token;
     res.clearCookie("token", {
       httpOnly: true,
       secure: false,
       sameSite: "strict",
     });
+    const {exp} = jwt.decode(token);
+    
+    const a = await redisClient.set(`token:${token}` , "Blocked");
+    await redisClient.expireAt(`token:${token}` , exp);
+
     
 
     return res.status(200).json({
@@ -14,7 +22,7 @@ const userLogout = (req, res) => {
     });
   } catch (error) {
     return res.json({
-      message: "Logout failed",
+      message: "Logout failed" + error,
     });
   }
 };

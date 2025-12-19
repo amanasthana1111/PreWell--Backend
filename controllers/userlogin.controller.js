@@ -31,7 +31,7 @@ const userLogin = async (req, res) => {
         _id: verifyData._id,
       },
       process.env.JWT_PASS,
-      { expiresIn: "7d" }
+      { expiresIn: "1d" }
     );
     res.cookie("token", token, {
       httpOnly: true,
