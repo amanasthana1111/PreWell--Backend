@@ -8,6 +8,7 @@ import registerRoutes from "./Routes/auth.routes.js";
 import uploadRouter from "./Routes/upload.route.js";
 import userRouter from "./Routes/user.route.js";
 import redisClient  from "./DB/redisConnection.js";
+import rateLimit from "./middleware/ratelimted.js";
 
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
+app.use(rateLimit)
 app.use("/api", registerRoutes);
 app.use("/resumes", uploadRouter);
 app.use("/user",userRouter)
