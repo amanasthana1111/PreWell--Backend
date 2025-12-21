@@ -32,4 +32,4 @@ const storage = multer.diskStorage({
 
 
 
-export default upload;;
+export default upload;
