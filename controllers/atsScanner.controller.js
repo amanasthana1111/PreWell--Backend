@@ -3,7 +3,8 @@ import { User } from "../Models/user.schema.js";
 import googleGemini from "../utils/googleGemini.js";
 
 const atsScanner = async(req,res)=>{
-const user_id = req.user_id;
+try {
+  const user_id = req.user_id;
  const user = await User.findById(user_id);
  if (!user) {
     return res.json({
@@ -24,6 +25,11 @@ const user_id = req.user_id;
       });
     }
     return res.json(AtsObj.data);
+} catch (error) {
+  return res.json({
+    message : "Something broke" + error
+  })
+}
 }
 
 export default atsScanner;

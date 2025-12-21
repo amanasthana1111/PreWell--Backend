@@ -25,15 +25,24 @@ const UserSchema = new Schema(
       required: true,
       select: false,
     },
-    resumesLink:{
-      type : String,
-      default: ""
-    }
+    resumesLink: {
+      type: String,
+      default: "",
+    },
+    plan: {
+      type: String,
+      enum: ["free", "paid"],
+      default: "free",
+      immutable: true,
+    },
+    freeRequestsLeft: {
+      type: Number,
+      default: 1,
+    },
   },
   { timestamps: true }
 );
 
+const User = mongoose.model("User", UserSchema);
 
-const User = mongoose.model("User" , UserSchema);
-
-export {User};
+export { User };

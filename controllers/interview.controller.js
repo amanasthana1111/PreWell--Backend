@@ -4,7 +4,8 @@ import googleGemini from "../utils/googleGemini.js";
 import Interview_SYSTEM_CONFIG from "../config/InterviewSystemCongfig1.js";
 
 export const interview = async (req, res) => {
-  const user_id = req.user_id;
+  try {
+    const user_id = req.user_id;
   const instruction = req.body.instruction ?? "";
   const difficulty = req.body.difficulty ?? "easy";
   const no_of_Q = Number(req.body.no_of_Q ?? 10);
@@ -35,4 +36,9 @@ export const interview = async (req, res) => {
     });
   }
   return res.json(QuestionObj.data);
+  } catch (error) {
+    return res.json({
+    message : "Something broke" + error
+  })
+  }
 };
