@@ -9,6 +9,7 @@ import uploadRouter from "./Routes/upload.route.js";
 import userRouter from "./Routes/user.route.js";
 import redisClient  from "./DB/redisConnection.js";
 import rateLimit from "./middleware/ratelimted.js";
+import interView_Router from "./Routes/interview.route.js";
 
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(rateLimit)
 app.use("/api", registerRoutes);
 app.use("/resumes", uploadRouter);
+app.use("/start",interView_Router)
 app.use("/user",userRouter)
 
 

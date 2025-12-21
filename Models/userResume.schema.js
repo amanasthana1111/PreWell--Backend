@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-
 const UserResumeSchema = new Schema(
   {
     user: {
@@ -14,55 +13,27 @@ const UserResumeSchema = new Schema(
     fullName: String,
     summary: { type: String, default: "" },
 
-    skills: [
-      {
-        name: String,
-        category: String,
-        proficiency: Number,
-      }
-    ],
+    skills: {
+      type: String,
+      default: "",
+    },
 
-    education: [
-      {
-        degree: String,
-        fieldOfStudy: String,
-        institution: String,
-        startYear: Number,
-        endYear: Number,
-        score: String,
-      }
-    ],
+    education: {
+      type: String,
+      default: "",
+    },
 
-    experience: [
-      {
-        companyName: String,
-        role: String,
-        employmentType: String,
-        techStack: [String],
-        startDate: Date,
-        endDate: Date,
-      }
-    ],
+    experience: {
+      type: String,
+      default: "",
+    },
 
-    projects: [
-      {
-        title: String,
-        domain: String,
-        techStack: [String],
-        description: String,
-        githubUrl: String,
-      }
-    ],
-
-    contactInfo: {
-      email: String,
-      phone: String,
-      linkedin: String,
-      github: String,
+    projects: {
+      type: String,
+      default: "",
     },
   },
   { timestamps: true }
 );
 
-
-export const UserResume = mongoose.model("UserResume" , UserResumeSchema);
+export const UserResume = mongoose.model("UserResume", UserResumeSchema);

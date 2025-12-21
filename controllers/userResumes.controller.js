@@ -24,9 +24,9 @@ const uploadResumes = async (req, res) => {
       resource_type: "raw",
       folder: "resumes",
     });
-    console.log("enter")
+
     fs.unlinkSync(localFilePath);
-    console.log("exit")
+    
     const uri = result.secure_url
     const a = await User.findByIdAndUpdate({_id : id},{
       resumesLink : uri
