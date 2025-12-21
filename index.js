@@ -18,24 +18,24 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 app.use(rateLimit)
-app.get("/",(req,res)=>{
-res.json({
-  message : "Server is running Fine"
-})
-})
+
 app.use("/api", registerRoutes);
 app.use("/resumes", uploadRouter);
 app.use("/start",interView_Router)
 app.use("/user",userRouter)
 
-
+app.get("/",(req,res)=>{
+res.json({
+  message : "Server is running Fine"
+})
+})
 
 const main = async () => {
   try {
     await connectDb();
     await redisClient.connect();
     app.listen(process.env.PORT, () => {
-      console.log("Server Started AT " + "http://localhost:Port/" );
+      console.log("Server Started AT " + `http://localhost:${process.env.PORT}` );
     });
   } catch (error) {
     console.log("Faild " + error);

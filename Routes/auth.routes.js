@@ -5,7 +5,7 @@ import userLogout from "../controllers/userlogout.controller.js";
 import UserAuth from "../middleware/UserAuth.js";
 const router = express.Router();
 
-router.post("/register" , userRegister);
+router.post("/register" ,userRegister);
 router.post("/login" ,userLogin);
 router.get("/logout",UserAuth,userLogout);
 

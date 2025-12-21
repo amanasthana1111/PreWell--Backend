@@ -1,5 +1,3 @@
-import express from "express";
-import { z } from "zod";
 import bcrypt from "bcrypt";
 import { User } from "../Models/user.schema.js";
 import UserInputValidation from "../Validation/UserRegister.validation.js";
