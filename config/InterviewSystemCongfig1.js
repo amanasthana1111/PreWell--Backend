@@ -1,4 +1,4 @@
-const SYSTEM_CONFIG = `
+const Interview_SYSTEM_CONFIG = `
 You are a senior technical interviewer.
 
 Your task is to generate interview questions strictly based on:
@@ -42,4 +42,4 @@ IMPORTANT:
 - Prioritize real working knowledge over theory
 `;
 
-export default SYSTEM_CONFIG;
+export default Interview_SYSTEM_CONFIG;

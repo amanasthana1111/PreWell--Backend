@@ -1,17 +1,23 @@
 import { GoogleGenAI } from "@google/genai";
 
-const googleGemini = async (customConfig,url,instruction,difficulty,no_of_Q)=>{
-try {
+const googleGemini = async (
+  customConfig,
+  url,
+  instruction = "",
+  difficulty = "",
+  no_of_Q = ""
+) => {
+  try {
     const ai = new GoogleGenAI({
       apiKey: process.env.GOOGLE_GENAI_KEY,
     });
-    console.log(url)
+    
     const pdfResp = await fetch(`${url}`).then((response) =>
       response.arrayBuffer()
     );
     const contents = [
       {
-        text: ` Some User Perfercance = ${instruction},${difficulty},${no_of_Q} ,  ${customConfig } `,
+        text: ` Some User Perfercance = ${instruction},${difficulty},${no_of_Q} ,  ${customConfig} `,
       },
       {
         inlineData: {
@@ -30,20 +36,18 @@ try {
       .replace(/```$/, "")
       .trim();
     const data = JSON.parse(rawdata);
-    const obj ={
-      flag : false,
+    const obj = {
+      flag: false,
       data,
-
     };
     return obj;
-} catch (error) {
-   const obj ={
-      flag : true,
+  } catch (error) {
+    const obj = {
+      flag: true,
       error,
-
     };
     return obj;
-}
-}
+  }
+};
 
 export default googleGemini;
