@@ -1,7 +1,7 @@
 import { User } from "../Models/user.schema.js";
 
 import googleGemini from "../utils/googleGemini.js";
-import Interview_SYSTEM_CONFIG from "../config/InterviewSystemCongfig1.js";
+import Interview_SYSTEM_CONFIG from "../config/interviewSystemConfig.js";
 
 export const interview = async (req, res) => {
   try {

@@ -8,7 +8,7 @@ import registerRoutes from "./Routes/auth.routes.js";
 import uploadRouter from "./Routes/upload.route.js";
 import userRouter from "./Routes/user.route.js";
 import redisClient  from "./DB/redisConnection.js";
-import rateLimit from "./middleware/ratelimted.js";
+import rateLimit from "./middleware/ratelimited.js";
 import interView_Router from "./Routes/interview.route.js";
 
 
