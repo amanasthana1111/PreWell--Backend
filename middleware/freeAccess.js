@@ -9,9 +9,7 @@ export const checkAccess = async (req, res, next) => {
         message: "Something wrong",
       });
     }
-    if (UserPlan.plan === "paid") {
-      return next();
-    }
+    
     if (UserPlan.freeRequestsLeft <= 0) {
       return res.status(403).json({
         message: "Free limit reached. Please upgrade your plan.",
