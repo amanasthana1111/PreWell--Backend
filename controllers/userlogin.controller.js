@@ -8,7 +8,7 @@ const userLogin = async (req, res) => {
     const parsingData = UserLoginInputValidation.safeParse(req.body);
     if (!parsingData.success) {
       return res.status(400).json({
-        message: parsed.error.errors[0].message,
+        message: parsingData.error.errors[0].message
       });
     }
 

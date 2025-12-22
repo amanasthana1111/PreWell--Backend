@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { tr } from "zod/v4/locales";
 const { Schema } = mongoose;
 
 const UserSchema = new Schema(
@@ -33,7 +32,6 @@ const UserSchema = new Schema(
       type: String,
       enum: ["free", "paid"],
       default: "free",
-      immutable: true,
     },
     freeRequestsLeft: {
       type: Number,
