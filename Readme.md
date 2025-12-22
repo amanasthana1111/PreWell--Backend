@@ -37,8 +37,14 @@ A production-ready backend system built with **Node.js, Express, MongoDB, Redis,
 ```
 
 PROJECT/
+├── config/
+│   ├── atsSystemConfig.js
+│   └── interviewSystemConfig.js
+│
 ├── controllers/
+│   ├── atsScanner.controller.js
 │   ├── interview.controller.js
+│   ├── paid.controller.js
 │   ├── userRegister.controller.js
 │   ├── userlogin.controller.js
 │   ├── userlogout.controller.js
@@ -49,12 +55,12 @@ PROJECT/
 │   └── redisConnection.js
 │
 ├── middleware/
-│   ├── ratelimted.js
+│   ├── freeAccess.js
+│   ├── ratelimited.js
 │   └── UserAuth.js
 │
 ├── Models/
 │   ├── user.schema.js
-│   └── userResume.schema.js
 │
 ├── Routes/
 │   ├── auth.routes.js
@@ -66,17 +72,19 @@ PROJECT/
 │   ├── cloudinary.js
 │   ├── googleGemini.js
 │   ├── multer.js
-│   └── systemCongfig1.js
 │
 ├── Validation/
+│   ├── sum.validation.js
 │   ├── UserRegister.validation.js
 │   ├── UserLogin.validation.js
-│   └── UserProfile.Validation.js
+│   └── UserProfile.validation.js
 │
-├── files/              # Temporary uploaded files
-├── index.js            # App entry point
-├── package.json
-└── .env
+├── files/                 # temp uploads
+├── .env
+├── .gitignore
+├── index.js
+└── package.json
+
 
 ````
 
