@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import redisClient from "../DB/redisConnection.js";
 
 
-const UserAuth =async (req, res, next) => {
+const isUserAuth =async (req, res, next) => {
   try {
     const token = req.cookies.token;
     if(!token){
@@ -21,7 +21,9 @@ const UserAuth =async (req, res, next) => {
       });
     }
     req.user_id = decodedToken._id;
-    next();
+    return res.json({
+        message : "User is Vaild"
+    })
   } catch (error) {
     return res.status(401).json({
       message: "logIn First ",
@@ -29,4 +31,4 @@ const UserAuth =async (req, res, next) => {
   }
 };
 
-export default UserAuth;
+export default isUserAuth;
