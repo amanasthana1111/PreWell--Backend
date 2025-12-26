@@ -22,6 +22,7 @@ const isUserAuth =async (req, res, next) => {
     }
     req.user_id = decodedToken._id;
     return res.json({
+      username : decodedToken.username,
         message : "User is Vaild"
     })
   } catch (error) {
