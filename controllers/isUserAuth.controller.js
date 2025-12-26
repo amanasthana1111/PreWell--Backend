@@ -20,7 +20,7 @@ const isUserAuth = async (req, res, next) => {
       });
     }
     req.user_id = decodedToken._id;
-    return res.json({
+    return res.status(200).json({
       username: decodedToken.username,
       plan : decodedToken.plan,
       email : decodedToken.email,
