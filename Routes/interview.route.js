@@ -7,7 +7,7 @@ import { isResumesUpload } from "../middleware/isResumesUpload.js";
 const interView_Router = express.Router();
 
 
-interView_Router.post("/interview",UserAuth ,checkAccess, isResumesUpload, interview )
-interView_Router.get("/atsScanner",UserAuth,checkAccess,isResumesUpload,atsScanner)
+interView_Router.post("/interview",UserAuth , isResumesUpload,checkAccess, interview )
+interView_Router.get("/atsScanner",UserAuth,isResumesUpload,checkAccess,atsScanner)
 
 export default interView_Router;
