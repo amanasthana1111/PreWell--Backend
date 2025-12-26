@@ -29,6 +29,7 @@ const userLogin = async (req, res) => {
     const token = jwt.sign(
       {
         _id: verifyData._id,
+        username : verifyData.username
       },
       process.env.JWT_PASS,
       { expiresIn: "1d" }
