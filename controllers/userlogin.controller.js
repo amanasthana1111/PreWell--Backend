@@ -30,7 +30,8 @@ const userLogin = async (req, res) => {
       {
         _id: verifyData._id,
         username : verifyData.username,
-        plan : verifyData.plan
+        plan : verifyData.plan,
+        email : verifyData.email
       },
       process.env.JWT_PASS,
       { expiresIn: "1d" }
