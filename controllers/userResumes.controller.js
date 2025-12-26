@@ -39,6 +39,7 @@ const uploadResumes = async (req, res) => {
 
     return res.status(201).json({
       success: true,
+      resumesLink : uri
     });
   } catch (error) {
     console.error("Upload error:", error);
