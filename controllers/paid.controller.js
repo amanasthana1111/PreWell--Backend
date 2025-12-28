@@ -20,9 +20,9 @@ export const paidUser = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    if (user.plan === "paid") {
-      return res.json({ message: "You already have a subscription" });
-    }
+    // if (user.plan === "paid") {
+    //   return res.json({ message: "You already have a subscription" });
+    // }
 
     if (firstNo + secondNo !== sum) {
       return res.status(400).json({ message: "Invalid sum verification" });
