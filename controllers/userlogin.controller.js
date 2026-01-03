@@ -8,7 +8,7 @@ const userLogin = async (req, res) => {
     const parsingData = UserLoginInputValidation.safeParse(req.body);
     if (!parsingData.success) {
       return res.status(400).json({
-        message: parsingData.error.errors[0].message
+        message: parsingData.error.errors[0].message,
       });
     }
 
@@ -29,18 +29,18 @@ const userLogin = async (req, res) => {
     const token = jwt.sign(
       {
         _id: verifyData._id,
-        username : verifyData.username,
-        plan : verifyData.plan,
-        email : verifyData.email
+        username: verifyData.username,
+        plan: verifyData.plan,
+        email: verifyData.email,
       },
       process.env.JWT_PASS,
       { expiresIn: "1d" }
     );
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
-      maxAge: 24 * 60 * 60 * 1000, // 1 days
+      secure: true, // REQUIRED
+      sameSite: "none", // REQUIRED
+      maxAge: 24 * 60 * 60 * 1000,
     });
     res.json({
       message: "SignIn done",
