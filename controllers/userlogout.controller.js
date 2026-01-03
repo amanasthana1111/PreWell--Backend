@@ -6,8 +6,8 @@ const userLogout = async (req, res) => {
     const token = req.cookies.token;
     res.clearCookie("token", {
       httpOnly: true,
-      secure: true,
-      sameSite: "none",
+      secure: false,
+      sameSite: "lax",
     });
     const {exp} = jwt.decode(token);
     
