@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: [process.env.FROUNT_LINK , "http://localhost:5173"] ,
+    origin: ["https://pre-well-frontend.vercel.app" , "http://localhost:5173"] ,
     credentials: true,
   })
 );
