@@ -344,8 +344,4 @@ This project showcases **real-world backend engineering concepts**:
 
 ---
 
-If you want, I can next:
-- ✅ Add **Swagger/OpenAPI**
-- ✅ Create **Postman collection**
-- ✅ Write **deployment guide (Vercel / AWS / Docker)**
 ```
