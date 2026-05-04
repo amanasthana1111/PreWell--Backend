@@ -1,6 +1,7 @@
 import { Ats_System_config } from "../config/atsSystemConfig.js";
 import { User } from "../Models/user.schema.js";
 import googleGemini from "../utils/googleGemini.js";
+import { saveResumeScore } from "../utils/resumeAnalysis.service.js";
 
 const atsScanner = async(req,res)=>{
 try {
@@ -24,6 +25,7 @@ try {
         message: "Something problem" + AtsObj.error,
       });
     }
+    await saveResumeScore({ user, atsData: AtsObj.data });
     return res.json(AtsObj.data);
 } catch (error) {
   return res.json({
